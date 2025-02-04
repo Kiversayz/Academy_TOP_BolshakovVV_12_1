@@ -12,7 +12,7 @@ class Timetable:
     
     def add_time (self, course, mounthDay, fileName ):
         """ Добавить курс {course} с датой {mounthDay} и наименование файла сохранения (fileName) """
-        if not self.chek_curse(course):
+        if not self.check_course(course):
             data = {}
             data['course'] = course
             data['mounthDay'] = mounthDay
@@ -22,7 +22,7 @@ class Timetable:
         else:
             return False 
     
-    def chek_curse (self, course):
+    def check_course (self, course):
         for i in range(len(self.__times)):
             if self.__times[i]['course'] == str(course):
                 return True

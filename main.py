@@ -2,20 +2,44 @@ from MVC import controller
 from MVC import model
 from MVC import viwe
 
+def main():
+    mod = model.Timetable()
+    control = controller.TimetamleController(mod)
+    vi = viwe.TimeViwe(control)
 
-mod = model.Timetable()
-control = controller.TimetamleController(mod)
-vi = viwe.TimeViwe(control)
+    vi.display_def_action()
 
-vi.display_def_action()
+    while True:
+        print("\nВыберите действие:")
+        print("1. Просмотреть расписание (авторизация)")
+        print("2. Просмотреть все курсы и даты")
+        print("3. Добавить курс (авторизация)")
+        print("4. Изменить дату курса (авторизация)")
+        print("5. Выход")
 
-""" userName = input('Введите свое имя: ')
-curse1 = mod.add_time('HTML', '20 Феврала', userName)
-curse2 = mod.add_time('CSS', '16 Октября', userName)
-curse3 = mod.add_time('Python', '3 Сентября', userName)
-urse3 = mod.add_time('Python', '13 Сентября', userName)
+        choice = input("Ваш выбор: ")
 
-mod.update_time_course('HTML','33 Декабря', userName)
-mod.update_time_course('HРML','33 Декабря', userName)
+        if choice == '1':
+            role = input("Введите вашу роль (guest, is_staff, is_superpuper, user_owner): ")
+            vi.display_times_auth(role)
+        elif choice == '2':
+            vi.display_all_times()
+        elif choice == '3':
+            role = input("Введите вашу роль (guest, is_staff, is_superpuper, user_owner): ")
+            course = input("Название курса: ")
+            month_day = input("Дата (например, 15 Марта): ")
+            file_name = input("Имя файла для сохранения: ")
+            vi.post_add_time_auth(course, month_day, file_name, role)
+        elif choice == '4':
+            role = input("Введите вашу роль (guest, is_staff, is_superpuper, user_owner): ")
+            course = input("Название курса: ")
+            month_day = input("Новая дата (например, 20 Апреля): ")
+            file_name = input("Имя файла для сохранения: ")
+            vi.post_update_time_course_auth(course, month_day, file_name, role)
+        elif choice == '5':
+            break
+        else:
+            print("Неверный выбор.")
 
-print(mod.get_times()) """
+if __name__ == "__main__":
+    main()

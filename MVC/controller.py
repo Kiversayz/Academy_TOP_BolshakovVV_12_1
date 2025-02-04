@@ -39,7 +39,7 @@ class TimetamleController:
     def get_all_times(self):
         data = self.model.get_times()
         if data:
-            return get_only_curse_list(),get_only_mounthDay_list()
+            return self.get_only_curse_list(),self.get_only_mounthDay_list()
         return
 
     def add_time_auth (self, course, mounthDay, fileName, role = 'guest'):
@@ -58,4 +58,4 @@ class TimetamleController:
             return self.errorValue + str(course)
         elif not isinstance(mounthDay,str):
             return self.errorValue + str(mounthDay)
-        return self.model.add_time(course, mounthDay, fileName)
+        return self.model.update_time_course(course, mounthDay, fileName)

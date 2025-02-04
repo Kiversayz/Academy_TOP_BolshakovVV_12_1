@@ -25,6 +25,7 @@ class TimeViwe:
             print('Расписание курсов:')
             for i in range(len(courses)):
                 print(f'{courses[i]}: {mounthDays[i]}')
+            return
         print('Расписание занятий - не запланированно.')
     
     def post_add_time_auth (self, course, mounthDay, fileName, role = 'guest'):
